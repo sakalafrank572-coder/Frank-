@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRAND X AI v7.0 - Luxury Print Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #ffd700;
+            --gold-light: #ffed4e;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000;
+            color: #f5f5f5;
+            margin: 0;
+            overflow: hidden;
+        }
+        .luxury-text {
+            font-family: 'Cinzel', serif;
+        }
+        .luxury-gradient {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2d2d2d 50%, #1a1a1a 75%, #000000 100%);
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .gold-border {
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        .gold-border-focus:focus-within {
+            border-color: rgba(255, 215, 0, 0.6);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 215, 0, 0.2);
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 215, 0, 0.4);
+        }
+
+        /* Animations */
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .shimmer {
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes ripple {
+            0% { transform: scale(1); opacity: 0.4; }
+            100% { transform: scale(1.8); opacity: 0; }
+        }
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--gold);
+            animation: ripple 3s linear infinite;
+        }
+
+        @keyframes orbit {
+            from { transform: rotate(0deg) translateX(45px) rotate(0deg); }
+            to { transform: rotate(360deg) translateX(45px) rotate(-360deg); }
+        }
+        .animate-orbit {
+            animation: orbit 10s linear infinite;
+        }
+
+        .shimmer-text {
+            background: linear-gradient(to right, #9f9f9f 0%, #fff 10%, #868686 20%);
+            background-position: 0;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer-text 5s infinite linear;
+            background-size: 500px;
+        }
+        @keyframes shimmer-text {
+            0% { background-position: -500px; }
+            100% { background-position: 500px; }
+        }
+
+        /* Robot Specific Animations */
+        @keyframes robot-blink {
+            0%, 90%, 100% { transform: scaleY(1); }
+            95% { transform: scaleY(0.1); }
+        }
+        .robot-eye {
+            animation: robot-blink 4s infinite;
+            transform-origin: center;
+        }
+
+        @keyframes robot-scan {
+            0%, 30%, 50%, 100% { transform: translateX(0); }
+            35%, 45% { transform: translateX(4px); }
+            40% { transform: translateX(-4px); }
+        }
+        .robot-eye-container {
+            animation: robot-scan 10s infinite ease-in-out;
+        }
+
+        @keyframes antenna-pulse {
+            0%, 100% { opacity: 0.4; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 15px var(--gold); }
+        }
+        .antenna-light {
+            animation: antenna-pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes robot-hover {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-6px) rotate(2deg); }
+            66% { transform: translateY(4px) rotate(-2deg); }
+        }
+        .robot-head {
+            animation: robot-hover 6s infinite ease-in-out;
+        }
+
+        @keyframes equalizer-pulse {
+            0%, 100% { height: 4px; }
+            50% { height: 12px; }
+        }
+        .animate-equalizer {
+            animation: equalizer-pulse 0.4s infinite ease-in-out;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.40.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "three": "https://esm.sh/three@^0.174.0",
+    "@react-three/fiber": "https://esm.sh/@react-three/fiber@^9.0.4",
+    "@react-three/drei": "https://esm.sh/@react-three/drei@^10.0.3"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "GRAND X AI v7.0",
+  "description": "An on-demand merch mockup generator that uses Gemini 2.5 Flash Image to realistically place your logo on products and perform AI-driven edits like filter application or background changes. Powered by the exclusive partnership between Google Gemini and CEO Frank.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}
